@@ -20,7 +20,6 @@ const resolvers = {
 			const user = await User.create({
 				username,
 				password,
-				levels: levelData,
 			});
 			const token = signToken(user);
 			return { token, user };

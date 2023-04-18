@@ -3,7 +3,6 @@ const typeDefs = `#graphql
       _id: ID
       username: String
       password: String
-      levels: [Level]
     }
 
     type Auth {

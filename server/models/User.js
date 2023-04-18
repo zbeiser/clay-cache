@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const levelSchema = require("./Level.js");
 
 const userSchema = new Schema({
 	username: {
@@ -14,7 +13,6 @@ const userSchema = new Schema({
 		required: true,
 		minlength: 5,
 	},
-	levels: [levelSchema],
 });
 
 userSchema.pre("save", async function (next) {

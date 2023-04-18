@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Auth from "../../utils/auth";
 
@@ -6,7 +6,7 @@ export default function Dashboard({ username }) {
   username = Auth.getProfile().data.username;
 
   return (
-    <div className="byeContainer">
+    <div>
       <h1> Hi {username}</h1>
     </div>
   );

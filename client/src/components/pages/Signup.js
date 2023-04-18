@@ -1,27 +1,23 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
-import { LOGIN } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
+import { ADD_USER } from "../../utils/mutations";
 
-function Login(props) {
+function Signup(props) {
   const [formState, setFormState] = useState({ username: "", password: "" });
-  const [login, { error }] = useMutation(LOGIN);
+  const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const mutationResponse = await login({
-        variables: {
-          username: formState.username,
-          password: formState.password,
-        },
-      });
-      const token = mutationResponse.data.login.token;
-      Auth.login(token);
-    } catch (e) {
-      console.log(e);
-    }
+    const mutationResponse = await addUser({
+      variables: {
+        username: formState.username,
+        password: formState.password,
+      },
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
   };
 
   const handleChange = (event) => {
@@ -34,27 +30,21 @@ function Login(props) {
 
   return (
     <main>
-      <h1>Login</h1>
+      <h1>Signup</h1>
       <form onSubmit={handleFormSubmit}>
         <div>
           <div>
-            <label
-              htmlFor="username">
-              Username:{" "}
-            </label>
+            <label htmlFor="username">Username: </label>
             <input
               placeholder="username"
               name="username"
-              type="text"
+              type="username"
               id="username"
               onChange={handleChange}
             />
           </div>
           <div>
-            <label
-              htmlFor="pswd">
-              Password:{" "}
-            </label>
+            <label htmlFor="pswd">Password: </label>
             <input
               placeholder="********"
               name="password"
@@ -64,19 +54,14 @@ function Login(props) {
             />
           </div>
         </div>
-        {error ? (
-          <p>
-            The provided credentials are incorrect
-          </p>
-        ) : null}
         <div>
           <button type="submit">
             Submit
           </button>
           <div>
-            <Link to="/signup">
-              <button>
-                Create Account
+            <Link to="/login">
+              <button className="button">
+                Log in to an existing account
               </button>
             </Link>
           </div>
@@ -86,4 +71,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default Signup;

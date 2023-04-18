@@ -10,7 +10,7 @@ export default function Home() {
       navigate('/dashboard');
       return;
     }
-  }, []);
+  }, []);   // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <main>

@@ -6,8 +6,11 @@ export default function Dashboard({ username }) {
   username = Auth.getProfile().data.username;
 
   return (
-    <div>
+    <main>
       <h1> Hi {username}</h1>
-    </div>
+      <button onClick={() => Auth.logout()}>
+        Logout
+      </button>
+    </main>
   );
 }

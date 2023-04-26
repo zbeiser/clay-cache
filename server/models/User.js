@@ -13,6 +13,24 @@ const userSchema = new Schema({
 		required: true,
 		minLength: 8,
 	},
+  pots: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Pot',
+    },
+  ],
+  glazes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Glaze',
+    },
+  ],
+  clay: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Clay',
+    },
+  ],
 });
 
 userSchema.pre("save", async function (next) {
@@ -29,5 +47,27 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 
 const User = model("User", userSchema);
+
+const claySchema = new Schema({
+  clayName: {
+    type: String,
+    required: true,
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+const glazeSchema = new Schema({
+  glazeName: {
+    type: String,
+    required: true,
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
 module.exports = User;

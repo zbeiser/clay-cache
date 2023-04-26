@@ -4,7 +4,6 @@ const potSchema = new Schema({
   potName: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
     maxLength: 50,
   },
@@ -16,19 +15,19 @@ const potSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  clayType: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Clay',
-      required: true,
-    },
-  ],
+  clayType: {
+    type: Schema.Types.ObjectId,
+    ref: 'Clay',
+  },
   glazes: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Glaze',
     },
   ],
+  assembly: {
+    type: String,
+  },
   weight: {
     type: Number,
   },
@@ -48,7 +47,10 @@ const potSchema = new Schema({
   },
   firingType: {
     type: String,
-  }
+  },
+  inProgress: {
+    type: Boolean,
+  },
 });
 
 const Pot = model("Pot", potSchema);

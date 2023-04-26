@@ -17,7 +17,7 @@ const typeDefs = `#graphql
 
     type Query {
       user(_id:ID!): User
-      allusers:[User]
+      allUsers:[User]
     }
   
     type Mutation {  

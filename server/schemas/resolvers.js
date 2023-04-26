@@ -9,7 +9,7 @@ const resolvers = {
 			const user = await User.findById(_id);
 			return user;
 		},
-		allusers: async (parent, args, context) => {
+		allUsers: async (parent, args, context) => {
 			const users = await User.find({});
 			return users;
 		},

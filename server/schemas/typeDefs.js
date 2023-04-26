@@ -12,7 +12,7 @@ const typeDefs = `#graphql
       _id: ID
       potName: String
       potType: String
-      dateCreated: Date
+      dateCreated: String
       clayType: Clay
       glazes: [Glaze]
       assembly: String
@@ -20,7 +20,7 @@ const typeDefs = `#graphql
       height: Int
       width: Int
       notes: String
-      dateFired: Date
+      dateFired: String
       firingType: String
       inProgress: Boolean
     }
@@ -28,13 +28,13 @@ const typeDefs = `#graphql
     type Glaze {
       _id: ID
       glazeName: String
-      dateCreated: Date
+      dateCreated: String
     }
 
     type Clay {
       _id: ID
       clayName: String
-      dateCreated: Date
+      dateCreated: String
     }
 
     type Auth {

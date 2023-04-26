@@ -3,7 +3,7 @@ const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const { ApolloServerPluginDrainHttpServer } = require("@apollo/server/plugin/drainHttpServer");
 const http = require("http");
-const cors = require('cors');
+
 const path = require('path');
 require('dotenv').config();
 
@@ -17,7 +17,7 @@ const db = require("./config/connection");
 const PORT = process.env.PORT || 3001;
 // const SOCKETPORT = process.env.SOCKETPORT || 4000;
 
-const app = express(cors());
+const app = express();
 const httpServer = http.createServer(app);
 
 const server = new ApolloServer({
@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === "production") {
 	app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
-app.get("/*", (req, res) => {
+app.get("/", (req, res) => {
 	res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 

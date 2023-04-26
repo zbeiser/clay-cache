@@ -48,26 +48,4 @@ userSchema.methods.isCorrectPassword = async function (password) {
 
 const User = model("User", userSchema);
 
-const claySchema = new Schema({
-  clayName: {
-    type: String,
-    required: true,
-  },
-  dateCreated: {
-    type: Date,
-    default: Date.now,
-  },
-});
-
-const glazeSchema = new Schema({
-  glazeName: {
-    type: String,
-    required: true,
-  },
-  dateCreated: {
-    type: Date,
-    default: Date.now,
-  },
-});
-
 module.exports = User;

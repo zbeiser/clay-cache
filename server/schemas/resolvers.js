@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Pot, Glaze, Clay } = require("../models");
 
 //bringing in the signToken from the the function in auth
 const { signToken } = require("../utils/auth");

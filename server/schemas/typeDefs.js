@@ -3,6 +3,38 @@ const typeDefs = `#graphql
       _id: ID
       username: String
       password: String
+      pots: [Pot]
+      glazes: [Glaze]
+      clay: [Clay]
+    }
+
+    type Pot {
+      _id: ID
+      potName: String
+      potType: String
+      dateCreated: Date
+      clayType: Clay
+      glazes: [Glaze]
+      assembly: String
+      weight: Int
+      height: Int
+      width: Int
+      notes: String
+      dateFired: Date
+      firingType: String
+      inProgress: Boolean
+    }
+
+    type Glaze {
+      _id: ID
+      glazeName: String
+      dateCreated: Date
+    }
+
+    type Clay {
+      _id: ID
+      clayName: String
+      dateCreated: Date
     }
 
     type Auth {
